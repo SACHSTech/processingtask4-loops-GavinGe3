@@ -32,20 +32,11 @@ public class Sketch extends PApplet {
     }
 
     for (int circleX = width/2 + width/16; circleX < width - width/16; circleX += width/11){
-      ellipse(circleX, height/2 - width/16, height/16, height/16);
+      for (int circleY = width/2 + width/16; circleY < width - width/16; circleY += width/11){
+        ellipse(circleX, circleY, height/16, height/16);
+      }
     }
-    for (int circleX = width/2 + width/16; circleX < width - width/16; circleX += width/11){
-      ellipse(circleX, (height/2 - height/16 - height/11), height/16, height/16);
-    }
-    for (int circleX = width/2 + width/16; circleX < width - width/16; circleX += width/11){
-      ellipse(circleX, height/2 - height/16 - height/11*2, height/16, height/16);
-    }
-    for (int circleX = width/2 + width/16; circleX < width - width/16; circleX += width/11){
-      ellipse(circleX, height/2 - height/16 - height/11*3, height/16, height/16);
-    }
-    for (int circleX = width/2 + width/16; circleX < width - width/16; circleX += width/11){
-      ellipse(circleX, height/2 - height/16 - height/11*4, height/15, height/15);
-    }
+    
 
     for (int gradientY = height/2; gradientY < height; gradientY ++){
       for (int gradientX = 0; gradientX < width/2; gradientX++){
@@ -56,8 +47,15 @@ public class Sketch extends PApplet {
 
     int flowerCircleX = width / 2 + width / 4;
     int flowerCircleY = height / 2 + height / 4;
-
+    translate(flowerCircleX, flowerCircleY);
     ellipse(flowerCircleX, flowerCircleY, width/8, width/8);
+  
+    for (int count = 0; count < 9; count++ ) {
+      ellipse(0, 0, width/20, height/ 6);
+      rotate(radians(45));
+    }
+    
+    
 
  
 	
