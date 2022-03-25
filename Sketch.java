@@ -45,14 +45,13 @@ public class Sketch extends PApplet {
     
   
     // Draw Gradient
-    for (int gradientY = height/2; gradientY < height; gradientY ++) {
-      for (int gradientX = 0; gradientX < width/2; gradientX++){
-        for (int strokeColor = 0; strokeColor < 256; strokeColor += 255/ width/2){
-          stroke(strokeColor, strokeColor, strokeColor);
-          point(gradientX, gradientY);
-        }
-      }
+    float lineWidth = (width/2) / 255;
+    for (int gradientX = 0; gradientX < 256; gradientX++){
+      stroke(gradientX, gradientX, gradientX);
+      strokeWeight(lineWidth);
+      line(gradientX, height/2, gradientX, height);
     }
+    
 
     // Draw Flower
     stroke(0,0,0);
