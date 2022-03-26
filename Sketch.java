@@ -8,13 +8,16 @@ public class Sketch extends PApplet {
    */
   public void settings() {
 	// put your size call here
-    size(800, 800);
+    size(400, 400);
   }
 
   /** 
    * Called once at the beginning of execution.  Add initial set up
    * values here i.e background, stroke, fill etc.
    */
+        float lineX = 0;
+        
+
   
   public void setup() {
     background(255, 255, 255);
@@ -37,23 +40,27 @@ public class Sketch extends PApplet {
     }
 
     // Draw 5x5 circles
+    fill(50, 20, 50);
     for (int circleX = width/2 + width/16; circleX < width - width/16; circleX += width/10.7){
       for (int circleY = width/16; circleY < width/2 - width/16; circleY += width/10.7){
         ellipse(circleX, circleY, height/16, height/16);
       }
     }
     
-  
     // Draw Gradient
-    float lineWidth = (width/2) / 255;
+    float lineWidth = (float)(width/2) / 255;
     for (int gradientX = 0; gradientX < 256; gradientX++){
       stroke(gradientX, gradientX, gradientX);
-      strokeWeight(lineWidth);
-      line(gradientX, height/2, gradientX, height);
+      strokeWeight(3);
+      lineX += lineWidth;
+      if (lineX < width/2){
+        line(lineX, height/2, lineX, height);
+      }
     }
     
 
     // Draw Flower
+    fill(100, 20, 100);
     stroke(0,0,0);
     int flowerCircleX = width / 2 + width / 4;
     int flowerCircleY = height / 2 + height / 4;
@@ -62,6 +69,7 @@ public class Sketch extends PApplet {
       ellipse(0, width / 12, width/20, height/ 6);
       rotate(radians(45));
     }
+    fill (50, 60, 50);
     ellipse(0, 0, width/8, width/8);
     
     
