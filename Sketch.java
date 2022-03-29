@@ -3,29 +3,23 @@ import processing.core.PApplet;
 public class Sketch extends PApplet {
 	
 	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+ 
   public void settings() {
-	// put your size call here
-    size(400, 400);
+    size(525, 525);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
-        float lineX = 0;
-        
+  // Declare initial x value for gradient line
+  float gradientLineX = 0;
 
+  // Declare count variable for lines
+  int count = 0;
+  int countY = 0;
+  // Declare initial x and y value for pedals
   
+
   public void setup() {
     background(255, 255, 255);
   }
-
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
   
   public void draw() {
     
@@ -33,10 +27,17 @@ public class Sketch extends PApplet {
 
     // Draw 10x10 Grid
 	  for (int lineX = width / 20; lineX < width / 2; lineX += width / 20) {
-      line(lineX, 0, lineX, width / 2);
+      if (count < 9){
+        line(lineX, 0, lineX, width / 2);
+        count++;
+      }
+        
     }
-    for (int lineY = width / 20; lineY < width / 2; lineY += width / 20) {
-      line(0, lineY, width/2, lineY);
+    for (int lineY = height / 20; lineY < height / 2; lineY += height / 20) {
+      if (countY < 9){
+        line(0, lineY, width/2, lineY);
+        countY++;
+      }
     }
 
     // Draw 5x5 circles
@@ -52,23 +53,23 @@ public class Sketch extends PApplet {
     for (int gradientX = 0; gradientX < 256; gradientX++){
       stroke(gradientX, gradientX, gradientX);
       strokeWeight(3);
-      lineX += lineWidth;
-      if (lineX < width/2){
-        line(lineX, height/2, lineX, height);
+      gradientLineX += lineWidth;
+      if (gradientLineX < width/2) {
+        line(gradientLineX, height/2, gradientLineX, height);
       }
     }
     
-
-    // Draw Flower
+    // Draw Flower Pedals
     fill(100, 20, 100);
     stroke(0,0,0);
-    int flowerCircleX = width / 2 + width / 4;
-    int flowerCircleY = height / 2 + height / 4;
-    translate(flowerCircleX, flowerCircleY);
+    // Draw 
+    translate(width/2 + width /4 , height/2 + height/4);
     for (int count = 0; count < 9; count++ ) {
       ellipse(0, width / 12, width/20, height/ 6);
       rotate(radians(45));
     }
+
+    // Draw flower Center
     fill (50, 60, 50);
     ellipse(0, 0, width/8, width/8);
     
